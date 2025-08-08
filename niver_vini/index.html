@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário Vini!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .start-button {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border: none;
+            border-radius: 50px;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: scale(1);
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .start-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .start-button:active {
+            transform: scale(0.95);
+        }
+
+        .celebration {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-text {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            z-index: 10;
+            animation: textPulse 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes textPulse {
+            from { transform: translateX(-50%) scale(1); }
+            to { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .mouse-icon {
+            font-size: 80px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: mouseSlow 1s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+        }
+
+        /* Animação lenta (0-1s e 30-33s) */
+        @keyframes mouseSlow {
+            0% { 
+                transform: translate(-50%, -50%) rotate(-10deg) scale(0.8);
+            }
+            25% { 
+                transform: translate(-50%, -50%) rotate(5deg) scale(1.1);
+            }
+            50% { 
+                transform: translate(-50%, -50%) rotate(10deg) scale(1.3);
+            }
+            75% { 
+                transform: translate(-50%, -50%) rotate(-5deg) scale(1.1);
+            }
+            100% { 
+                transform: translate(-50%, -50%) rotate(-10deg) scale(0.8);
+            }
+        }
+
+        /* Animação rápida e aleatória (1-30s e 33-45s) */
+        @keyframes mouseFast {
+            0% { 
+                transform: translate(-50%, -50%) rotate(0deg) translateX(0px) translateY(0px) scale(1);
+            }
+            12.5% { 
+                transform: translate(-50%, -50%) rotate(135deg) translateX(-80px) translateY(-60px) scale(1.1);
+            }
+            25% { 
+                transform: translate(-50%, -50%) rotate(270deg) translateX(0px) translateY(-120px) scale(0.9);
+            }
+            37.5% { 
+                transform: translate(-50%, -50%) rotate(45deg) translateX(100px) translateY(-40px) scale(1.2);
+            }
+            50% { 
+                transform: translate(-50%, -50%) rotate(180deg) translateX(0px) translateY(0px) scale(0.8);
+            }
+            62.5% { 
+                transform: translate(-50%, -50%) rotate(315deg) translateX(-70px) translateY(80px) scale(1.1);
+            }
+            75% { 
+                transform: translate(-50%, -50%) rotate(90deg) translateX(0px) translateY(100px) scale(1.3);
+            }
+            87.5% { 
+                transform: translate(-50%, -50%) rotate(225deg) translateX(90px) translateY(30px) scale(0.9);
+            }
+            100% { 
+                transform: translate(-50%, -50%) rotate(360deg) translateX(0px) translateY(0px) scale(1);
+            }
+        }
+
+        /* Classes para controlar as animações */
+        .mouse-icon.slow {
+            animation: mouseSlow 1s ease-in-out infinite;
+        }
+
+        .mouse-icon.fast {
+            animation: mouseFast 0.8s ease-in-out infinite;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+        }
+
+        .confetti:nth-child(odd) {
+            background: #4ecdc4;
+            animation: confetti1 3s linear infinite;
+        }
+
+        .confetti:nth-child(even) {
+            background: #feca57;
+            animation: confetti2 3s linear infinite;
+        }
+
+        @keyframes confetti1 {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes confetti2 {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(-720deg);
+                opacity: 0;
+            }
+        }
+
+        .music-note {
+            position: absolute;
+            color: #fff;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: musicFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes musicFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="start-button" onclick="startCelebration()">START</button>
+        
+        <div class="celebration" id="celebration">
+            <div class="birthday-text">Feliz Aniversário Vini! 🎉</div>
+            
+            <div class="mouse-icon slow" id="mouse">🐭</div>
+
+            <!-- Notas musicais flutuantes -->
+            <div class="music-note" style="top: 10%; left: 10%;">♪</div>
+            <div class="music-note" style="top: 20%; right: 15%;">♫</div>
+            <div class="music-note" style="top: 70%; left: 20%;">♪</div>
+            <div class="music-note" style="top: 80%; right: 10%;">♫</div>
+        </div>
+    </div>
+
+    <script>
+        function startCelebration() {
+            // Esconder o botão
+            document.querySelector('.start-button').style.display = 'none';
+            
+            // Mostrar a celebração
+            document.getElementById('celebration').style.display = 'block';
+            
+            // Criar confetes
+            createConfetti();
+            
+            // Iniciar controle de animações do ratinho
+            controlMouseAnimation();
+            
+            // Aqui você pode adicionar o áudio da música
+            const audio = new Audio('promise-kohmi-hirose.mp3');
+            audio.volume = 0.1; // Volume de 0.0 (mudo) a 1.0 (máximo)
+            audio.play();
+        }
+
+        function controlMouseAnimation() {
+            const mouse = document.getElementById('mouse');
+            
+            // 0-1s: Animação lenta (já está com classe 'slow')
+            
+            // 1s: Muda para animação rápida
+            setTimeout(() => {
+                mouse.className = 'mouse-icon fast';
+            }, 1000);
+            
+            // 30s: Volta para animação lenta
+            setTimeout(() => {
+                mouse.className = 'mouse-icon slow';
+            }, 28000);
+            
+            // 33s: Volta para animação rápida
+            setTimeout(() => {
+                mouse.className = 'mouse-icon fast';
+            }, 31000);
+        }
+
+        function createConfetti() {
+            const celebration = document.getElementById('celebration');
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    celebration.appendChild(confetti);
+                    
+                    // Remove confete após a animação
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+            
+            // Continua criando confetes
+            setTimeout(createConfetti, 3000);
+        }
+    </script>
+</body>
+</html>
